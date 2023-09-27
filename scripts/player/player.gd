@@ -12,7 +12,7 @@ func _process(delta):
 	set_player_animation()
 
 func motion_ctrl() -> void:
-	var input_vector = get_input_vector_keyboard()
+	var input_vector = get_input_vector_mouse()
 	var velocity = input_vector * speed
 	
 	if velocity != Vector2.ZERO:
@@ -29,14 +29,14 @@ func motion_ctrl() -> void:
 
 func set_player_animation() -> void:
 	if is_running:
-		$spr_player2.play("run")
+		$spr_player.play("run")
 	else:
-		$spr_player2.play("idle")
+		$spr_player.play("idle")
 	
 	if facing_left:
-		$spr_player2.flip_h = true
+		$spr_player.flip_h = true
 	else:
-		$spr_player2.flip_h = false
+		$spr_player.flip_h = false
 
 func get_input_vector_keyboard() -> Vector2:
 	var input_vector = Vector2.ZERO
