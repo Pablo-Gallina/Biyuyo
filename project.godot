@@ -11,6 +11,7 @@ config_version=4
 [application]
 
 config/name="Biyuyo"
+run/main_scene="res://assets/scenes/levels/Level_1.tscn"
 config/icon="res://icon.png"
 
 [gui]
