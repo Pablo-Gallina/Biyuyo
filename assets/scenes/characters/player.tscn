@@ -11,7 +11,7 @@
 [ext_resource path="res://assets/scenes/characters/sprites/idle/idle_0.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 20.5, 26.5 )
+extents = Vector2( 16, 24 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -29,17 +29,16 @@ animations = [ {
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 411, 378 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 speed = 250.0
 
 [node name="col_player" type="CollisionShape2D" parent="."]
-position = Vector2( -1.5, -5.5 )
+position = Vector2( -3, -2 )
 shape = SubResource( 1 )
 
 [node name="spr_player" type="AnimatedSprite" parent="."]
+position = Vector2( -2.5, -2.91667 )
+scale = Vector2( 1.13889, 1.13889 )
 frames = SubResource( 3 )
 animation = "idle"
-frame = 3
+frame = 2
 playing = true
