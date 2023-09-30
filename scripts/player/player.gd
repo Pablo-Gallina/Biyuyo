@@ -3,7 +3,7 @@ extends KinematicBody2D
 export var min_distance: float = 40
 
 export var speed : float = 100
-export var dash_speed: float = 700  # Velocidad del dash
+export var dash_speed: float = 800 # Velocidad del dash
 export var dash_duration: float = 0.2  # Duración del dash en segundos
 export var dash_cooldown: float = 1.0  # Tiempo de espera entre dashes en segundos
 
@@ -45,6 +45,9 @@ func set_player_animation() -> void:
 		$spr_player.flip_h = true
 	else:
 		$spr_player.flip_h = false
+	
+	if !can_dash:
+		$spr_player.play("dash")
 
 func get_input_vector_keyboard() -> Vector2:
 	var input_vector = Vector2.ZERO
@@ -71,7 +74,7 @@ func get_input_vector_mouse() -> Vector2:
 func handle_dash(delta: float) -> void:
 	var input_vector = get_input_vector_mouse()
 	var dash_direction = input_vector.normalized()
-	if can_dash and Input.is_action_just_pressed("ui_accept"):
+	if can_dash and Input.is_action_just_pressed("dash"):
 		# Calcula la dirección actual del personaje y aplica el dash
 		if input_vector != Vector2.ZERO:
 			dash_timer = dash_duration
