@@ -497,8 +497,16 @@ texture = ExtResource( 9 )
 [node name="player" parent="." instance=ExtResource( 1 )]
 speed = 275.0
 
-[node name="enemy" parent="." instance=ExtResource( 10 )]
-position = Vector2( 104, 104 )
-
 [node name="bg_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
+
+[node name="enemy_container" type="Node2D" parent="."]
+
+[node name="enemy" parent="enemy_container" instance=ExtResource( 10 )]
+position = Vector2( 104, 104 )
+
+[node name="enemy2" parent="enemy_container" instance=ExtResource( 10 )]
+position = Vector2( 384, 104 )
+
+[node name="enemy3" parent="enemy_container" instance=ExtResource( 10 )]
+position = Vector2( 728, 104 )

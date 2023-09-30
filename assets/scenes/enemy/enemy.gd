@@ -16,11 +16,9 @@ func _physics_process(delta):
 	movment = move_and_slide(movment)
 
 func _on_Area2D_body_entered(body):
-	if body != self:
+	print(body.is_in_group("player"))
+	if body != self and body.is_in_group("player"):
 		player = body
 
-func _on_Area2D_body_exited(body):
-	player  = null
-
 func eliminate_enemy():
-	queue_free()
+	call_deferred("queue_free")
