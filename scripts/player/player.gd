@@ -6,6 +6,7 @@ export var speed : float = 100
 export var dash_speed: float = 800 # Velocidad del dash
 export var dash_duration: float = 0.2  # Duración del dash en segundos
 export var dash_cooldown: float = 3.0  # Tiempo de espera entre dashes en segundos
+export var healt = 100
 
 var can_dash: bool = true  # Indica si se puede hacer un dash
 var dash_timer: float = 0.0  # Contador de tiempo para el dash
@@ -18,7 +19,7 @@ func _process(delta):
 	motion_ctrl()
 	set_player_animation()
 	handle_dash(delta)
-#	print("inicio")
+	print(healt)
 
 func motion_ctrl() -> void:
 	var input_vector = get_input_vector_mouse()
@@ -93,8 +94,13 @@ func handle_dash(delta: float) -> void:
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("enemy") and can_dash:
 		print("ENEMY your  deat")
-	
+		$spr_player.play("hit")
+		damage_ctrl(20)
+
 	if body.is_in_group("enemy") and !can_dash:
 		print("enemy eleminded")
 		if body.has_method("eliminate_enemy"):
 			body.eliminate_enemy()
+
+func damage_ctrl(damage: int) -> void:
+	healt -= damage

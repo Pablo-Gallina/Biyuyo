@@ -21,7 +21,8 @@ animations = [ {
 radius = 608.763
 
 [node name="enemy" type="KinematicBody2D" groups=["enemy"]]
-collision_layer = 2
+collision_layer = 3
+collision_mask = 3
 script = ExtResource( 5 )
 
 [node name="col_enemy" type="CollisionShape2D" parent="."]
@@ -33,6 +34,7 @@ position = Vector2( 40, 8 )
 scale = Vector2( 2.5, 2.5 )
 frames = SubResource( 2 )
 animation = "idle"
+frame = 2
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]

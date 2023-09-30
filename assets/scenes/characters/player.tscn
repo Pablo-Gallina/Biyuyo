@@ -21,6 +21,11 @@ animations = [ {
 "name": "dash",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 10 ), null ],
+"loop": true,
+"name": "hit",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 10 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "idle",
@@ -49,7 +54,8 @@ shape = SubResource( 1 )
 position = Vector2( -2.5, -2.91667 )
 scale = Vector2( 1.13889, 1.13889 )
 frames = SubResource( 3 )
-animation = "dash"
+animation = "idle"
+frame = 2
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
