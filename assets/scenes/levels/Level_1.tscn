@@ -502,4 +502,3 @@ position = Vector2( 104, 104 )
 
 [node name="bg_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
-autoplay = true

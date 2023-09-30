@@ -18,6 +18,7 @@ func _process(delta):
 	motion_ctrl()
 	set_player_animation()
 	handle_dash(delta)
+#	print("inicio")
 
 func motion_ctrl() -> void:
 	var input_vector = get_input_vector_mouse()
@@ -88,3 +89,12 @@ func handle_dash(delta: float) -> void:
 		# Reiniciar el contador y habilitar el dash después del tiempo de espera
 		dash_timer = 0.0
 		can_dash = true
+
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("enemy") and can_dash:
+		print("ENEMY your  deat")
+	
+	if body.is_in_group("enemy") and !can_dash:
+		print("enemy eleminded")
+		if body.has_method("eliminate_enemy"):
+			body.eliminate_enemy()

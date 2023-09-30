@@ -19,6 +19,8 @@ func _on_Area2D_body_entered(body):
 	if body != self:
 		player = body
 
-
 func _on_Area2D_body_exited(body):
 	player  = null
+
+func eliminate_enemy():
+	queue_free()
