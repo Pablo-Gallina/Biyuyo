@@ -34,6 +34,7 @@ animations = [ {
 
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 411, 378 )
+collision_layer = 3
 script = ExtResource( 2 )
 speed = 250.0
 

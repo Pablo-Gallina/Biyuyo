@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/scenes/characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tiles/tile_0195.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://assets/tiles/tile_0237.png" type="Texture" id=7]
 [ext_resource path="res://assets/tiles/tile_0236.png" type="Texture" id=8]
 [ext_resource path="res://assets/tiles/tile_0217.png" type="Texture" id=9]
+[ext_resource path="res://assets/scenes/enemy/enemy.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/audio/bg_audio.mp3" type="AudioStream" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 448.062, 8 )
@@ -26,6 +28,8 @@ extents = Vector2( 8.5, 242.5 )
 
 [node name="top" type="StaticBody2D" parent="."]
 position = Vector2( 0, -16 )
+collision_layer = 2
+collision_mask = 2
 __meta__ = {
 "_edit_group_": true
 }
@@ -176,6 +180,8 @@ texture = ExtResource( 4 )
 
 [node name="left" type="StaticBody2D" parent="."]
 position = Vector2( 0, -16 )
+collision_layer = 2
+collision_mask = 2
 __meta__ = {
 "_edit_group_": true
 }
@@ -261,6 +267,8 @@ texture = ExtResource( 6 )
 
 [node name="bottom" type="StaticBody2D" parent="."]
 position = Vector2( 0, -16 )
+collision_layer = 2
+collision_mask = 2
 __meta__ = {
 "_edit_group_": true
 }
@@ -406,6 +414,8 @@ texture = ExtResource( 7 )
 
 [node name="right" type="StaticBody2D" parent="."]
 position = Vector2( 0, -16 )
+collision_layer = 2
+collision_mask = 2
 __meta__ = {
 "_edit_group_": true
 }
@@ -486,3 +496,10 @@ texture = ExtResource( 9 )
 
 [node name="player" parent="." instance=ExtResource( 1 )]
 speed = 275.0
+
+[node name="enemy" parent="." instance=ExtResource( 10 )]
+position = Vector2( 104, 104 )
+
+[node name="bg_audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+autoplay = true

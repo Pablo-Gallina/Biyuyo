@@ -5,7 +5,7 @@ export var min_distance: float = 40
 export var speed : float = 100
 export var dash_speed: float = 800 # Velocidad del dash
 export var dash_duration: float = 0.2  # Duración del dash en segundos
-export var dash_cooldown: float = 1.0  # Tiempo de espera entre dashes en segundos
+export var dash_cooldown: float = 3.0  # Tiempo de espera entre dashes en segundos
 
 var can_dash: bool = true  # Indica si se puede hacer un dash
 var dash_timer: float = 0.0  # Contador de tiempo para el dash
