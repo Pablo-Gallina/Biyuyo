@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/scenes/characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tiles/tile_0195.png" type="Texture" id=2]
@@ -13,6 +13,9 @@
 [ext_resource path="res://assets/audio/bg_audio.mp3" type="AudioStream" id=11]
 [ext_resource path="res://assets/canvas/healt_bar.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scripts/levels/level_1/Level_1.gd" type="Script" id=13]
+[ext_resource path="res://assets/canvas/sprites/key_a_press.png" type="Texture" id=14]
+[ext_resource path="res://assets/fonts/BULKYPIX.TTF" type="DynamicFontData" id=15]
+[ext_resource path="res://assets/canvas/sprites/key_a.png" type="Texture" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 448.062, 8 )
@@ -25,6 +28,18 @@ extents = Vector2( 442, 9 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 8.5, 242.5 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 16 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "press",
+"speed": 1.0
+} ]
+
+[sub_resource type="DynamicFont" id=6]
+size = 12
+font_data = ExtResource( 15 )
 
 [node name="Level_1" type="Node2D"]
 script = ExtResource( 13 )
@@ -504,8 +519,27 @@ speed = 275.0
 
 [node name="bg_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
+autoplay = true
 
 [node name="enemy_container" type="Node2D" parent="."]
 
 [node name="healt_bar" parent="." instance=ExtResource( 12 )]
 player_node = NodePath("../player")
+
+[node name="instructions" type="Node2D" parent="."]
+
+[node name="key_a" type="AnimatedSprite" parent="instructions"]
+position = Vector2( 126, 502 )
+scale = Vector2( 2.25, 2.25 )
+frames = SubResource( 5 )
+animation = "press"
+frame = 1
+playing = true
+
+[node name="text" type="Label" parent="instructions"]
+margin_left = 152.0
+margin_top = 496.0
+margin_right = 777.0
+margin_bottom = 513.0
+custom_fonts/font = SubResource( 6 )
+text = "Presiona A para hacer un dash y vencer al enemigo."

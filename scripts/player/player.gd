@@ -19,7 +19,6 @@ func _process(delta):
 	motion_ctrl()
 	set_player_animation()
 	handle_dash(delta)
-	print(healt)
 
 func motion_ctrl() -> void:
 	var input_vector = get_input_vector_mouse()
@@ -93,12 +92,12 @@ func handle_dash(delta: float) -> void:
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("enemy") and can_dash:
-		print("ENEMY your  deat")
+#		print("ENEMY your  deat")
 		$spr_player.play("hit")
 		damage_ctrl(20)
 
 	if body.is_in_group("enemy") and !can_dash:
-		print("enemy eleminded")
+#		print("enemy eleminded")
 		if body.has_method("eliminate_enemy"):
 			body.eliminate_enemy()
 			if healt < 100:

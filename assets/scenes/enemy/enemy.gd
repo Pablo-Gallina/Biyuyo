@@ -16,7 +16,6 @@ func _physics_process(delta):
 	movment = move_and_slide(movment)
 
 func _on_Area2D_body_entered(body):
-	print(body.is_in_group("player"))
 	if body != self and body.is_in_group("player"):
 		player = body
 
