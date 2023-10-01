@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/scenes/characters/sprites/dash/dash.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player/player.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/scenes/characters/sprites/idle/idle_2.png" type="Texture" id=8]
 [ext_resource path="res://assets/scenes/characters/sprites/run/run_0.png" type="Texture" id=9]
 [ext_resource path="res://assets/scenes/characters/sprites/idle/idle_0.png" type="Texture" id=10]
+[ext_resource path="res://assets/scenes/characters/dash_animation.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 24 )
@@ -45,6 +46,7 @@ position = Vector2( 411, 378 )
 collision_layer = 3
 script = ExtResource( 2 )
 speed = 250.0
+dash_animation_node = ExtResource( 11 )
 
 [node name="col_player" type="CollisionShape2D" parent="."]
 position = Vector2( -3, -2 )
@@ -55,7 +57,6 @@ position = Vector2( -2.5, -2.91667 )
 scale = Vector2( 1.13889, 1.13889 )
 frames = SubResource( 3 )
 animation = "idle"
-frame = 2
 playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -64,4 +65,9 @@ playing = true
 position = Vector2( -3, -2 )
 shape = SubResource( 4 )
 
+[node name="dash_animation_timer" type="Timer" parent="."]
+wait_time = 0.04
+autostart = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="dash_animation_timer" to="." method="_on_dash_animation_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/scenes/characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tiles/tile_0195.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/scenes/enemy/enemy.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/audio/bg_audio.mp3" type="AudioStream" id=11]
 [ext_resource path="res://assets/canvas/healt_bar.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scripts/levels/level_1/Level_1.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 448.062, 8 )
@@ -26,6 +27,8 @@ extents = Vector2( 442, 9 )
 extents = Vector2( 8.5, 242.5 )
 
 [node name="Level_1" type="Node2D"]
+script = ExtResource( 13 )
+enemy = ExtResource( 10 )
 
 [node name="top" type="StaticBody2D" parent="."]
 position = Vector2( 0, -16 )
@@ -496,21 +499,13 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 9 )
 
 [node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 120, 104 )
 speed = 275.0
 
 [node name="bg_audio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
 
 [node name="enemy_container" type="Node2D" parent="."]
-
-[node name="enemy" parent="enemy_container" instance=ExtResource( 10 )]
-position = Vector2( 144, 432 )
-
-[node name="enemy2" parent="enemy_container" instance=ExtResource( 10 )]
-position = Vector2( 816, 456 )
-
-[node name="enemy3" parent="enemy_container" instance=ExtResource( 10 )]
-position = Vector2( 728, 104 )
 
 [node name="healt_bar" parent="." instance=ExtResource( 12 )]
 player_node = NodePath("../player")

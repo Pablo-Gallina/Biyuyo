@@ -7,7 +7,7 @@ export var dash_speed: float = 800 # Velocidad del dash
 export var dash_duration: float = 0.2  # Duración del dash en segundos
 export var dash_cooldown: float = 3.0  # Tiempo de espera entre dashes en segundos
 export var healt = 100
-
+export var dash_animation_node: PackedScene
 var can_dash: bool = true  # Indica si se puede hacer un dash
 var dash_timer: float = 0.0  # Contador de tiempo para el dash
 
@@ -101,6 +101,30 @@ func _on_Area2D_body_entered(body):
 		print("enemy eleminded")
 		if body.has_method("eliminate_enemy"):
 			body.eliminate_enemy()
+			if healt < 100:
+				healt += 5
 
 func damage_ctrl(damage: int) -> void:
 	healt -= damage
+	
+# Dashing animation
+func add_dash_animation():
+	if dash_animation_node != null:
+		var dash_animation_instance = dash_animation_node.instance()
+		if dash_animation_instance != null:
+			dash_animation_instance.set_property($spr_player.global_position, $spr_player.scale)
+			
+			# Determina si el jugador está mirando hacia la izquierda o la derecha
+			if facing_left:
+				# Si el jugador mira hacia la izquierda, voltea el sprite horizontalmente
+				dash_animation_instance.flip_h = true
+			else:
+				# Si el jugador mira hacia la derecha, asegúrate de que el sprite no esté volteado
+				dash_animation_instance.flip_h = false
+			
+			get_tree().current_scene.add_child(dash_animation_instance)
+
+
+func _on_dash_animation_timer_timeout():
+	if !can_dash:
+		add_dash_animation()

@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var player = null
 var movment = Vector2.ZERO
-var speed = 150
+var speed = 100
 
 func _physics_process(delta):
 	movment = Vector2.ZERO
