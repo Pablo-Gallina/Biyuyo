@@ -533,7 +533,6 @@ position = Vector2( 126, 502 )
 scale = Vector2( 2.25, 2.25 )
 frames = SubResource( 5 )
 animation = "press"
-frame = 1
 playing = true
 
 [node name="text" type="Label" parent="instructions"]

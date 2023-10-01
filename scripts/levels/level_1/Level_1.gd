@@ -16,7 +16,7 @@ func _process(delta):
 		spawn_enemies()
 	if level == 1:
 		if $instructions != null:
-			$instructions.queue_free()
+			$instructions.visible = false
 	print($player.healt)
 	if $player.healt <= 0:
 		game_over()
@@ -29,4 +29,4 @@ func spawn_enemies():
 
 func game_over():
 	game_over = true
-	get_tree().change_scene("res://assets/scenes/menu/menu.tscn")
+	get_tree().change_scene("res://assets/scenes/levels/game_over.tscn")
